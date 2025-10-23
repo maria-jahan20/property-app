@@ -1,11 +1,9 @@
 "use client"
 
 import Image from "next/image"
-import Link from "next/link"
-
 export default function HeavenSection() {
   return (
-    <section className="relative w-full h-[400px] md:h-[400px] lg:h-[400px] overflow-hidden">
+    <section className="relative w-full h-[400px] md:h-[400px] lg:h-[400px] overflow-hidden my-auto">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
