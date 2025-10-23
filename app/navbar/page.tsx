@@ -2,8 +2,9 @@
 
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
-import Image from "next/image" // Make sure to import Image
+import Image from "next/image"
 import { Menu, Phone } from "lucide-react"
+import MenuSection from "../menu/page"
 
 export default function Navbar() {
   const [isVisible, setIsVisible] = useState(true)
@@ -16,9 +17,7 @@ export default function Navbar() {
       const currentScrollY = window.scrollY
       setIsTop(currentScrollY < 10)
 
-      if (Math.abs(currentScrollY - lastScrollY.current) < 10) {
-        return
-      }
+      if (Math.abs(currentScrollY - lastScrollY.current) < 10) return
 
       if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
         setIsVisible(false)
@@ -26,6 +25,7 @@ export default function Navbar() {
       } else {
         setIsVisible(true)
       }
+
       lastScrollY.current = currentScrollY
     }
 
@@ -35,7 +35,7 @@ export default function Navbar() {
 
   const navClasses = `
     fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out
-    ${isTop ? "bg-transparent" : "bg-black/80 shadow-md fixed top-0 w-full z-[99999] transition-all duration-1000"}
+    ${isTop ? "bg-transparent" : "bg-black/80 shadow-md"}
     ${isVisible ? "translate-y-0" : "-translate-y-full"}
   `
 
@@ -47,15 +47,14 @@ export default function Navbar() {
             <Image
               src="/logo.svg"
               alt="JCX Logo"
-              width={100} // Adjust width as needed
-              height={40} // Adjust height as needed
+              width={100}
+              height={40}
               className="object-contain"
             />
           </Link>
 
-          {/* Parent div that groups all right-aligned items */}
+          {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8 text-white uppercase text-sm font-light tracking-wider">
-            {/* Group 1: Navigation Links */}
             <div className="flex items-center gap-6">
               <Link href="#residential" className="hover:text-gray-300 transition-colors">
                 Residential
@@ -65,16 +64,11 @@ export default function Navbar() {
                 Commercial
               </Link>
             </div>
-
-            {/* Group 2: Phone Number */}
             <Link href="tel:16777" className="hover:text-gray-300 transition-colors flex items-center gap-2 normal-case">
-              <Phone size={16} />
-              <span>16777</span>
+              <Phone size={16} /> <span>16777</span>
             </Link>
-
-            {/* Group 3: Menu Button (at the very right) */}
             <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              onClick={() => setIsMobileMenuOpen(true)}
               className="hover:text-gray-300 transition-colors flex items-center gap-3"
             >
               <span>Menu</span>
@@ -88,7 +82,7 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              onClick={() => setIsMobileMenuOpen(true)}
               className="text-white hover:text-gray-300 transition-colors"
             >
               <Menu size={28} />
@@ -97,20 +91,11 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Navigation */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden bg-black bg-opacity-95 absolute w-full">
-          <Link href="#residential" className="block text-white px-4 py-3 hover:bg-gray-900 uppercase">
-            Residential
-          </Link>
-          <Link href="#commercial" className="block text-white px-4 py-3 hover:bg-gray-900 uppercase">
-            Commercial
-          </Link>
-          <Link href="tel:16777" className="block text-white px-4 py-3 hover:bg-gray-900 uppercase">
-            16777
-          </Link>
-        </div>
-      )}
+      {/* Mobile Menu */}
+      <MenuSection
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
+      />
     </nav>
   )
 }
