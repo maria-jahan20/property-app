@@ -14,7 +14,7 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    image: "/images/footerImages/DSC04477-scaled-1.webp",
+    image: "/images/footerImages/foot.webp",
     quote:
       "Thank you for helping us throughout the project and also getting the apartment ready on time. Really happy with the effort of your team and wish you success.",
     name: "Mehazablen Chowdhury",
@@ -28,14 +28,14 @@ const testimonials: Testimonial[] = [
   },
   {
     id: 3,
-    image: "/images/footerImages/DSC04730-scaled-1.webp",
+    image: "/images/footerImages/foot2.webp",
     quote:
       "Excellent service and professional team. They understood our requirements perfectly and delivered beyond expectations. Highly recommended for any project.",
     name: "Sarah Johnson",
   },
   {
     id: 4,
-    image: "/images/footerImages/IMG_4749-1.webp ",
+    image: "/images/footerImages/test.webp ",
     quote:
      "Assalamu Aleikum. I want to start by thanking the people at JCX for being very friendly and understanding. I have experienced this kind of cooperation very rarely in this industry. Best Wishes to the company.",
       
