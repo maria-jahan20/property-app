@@ -1,6 +1,7 @@
 "use client"
 import { X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
+import Link from "next/link"
 
 interface MenuProps {
   isOpen: boolean
@@ -8,6 +9,21 @@ interface MenuProps {
 }
 
 export default function MenuSection({ isOpen, onClose }: MenuProps) {
+  const menuItems = [
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Management Team", href: "/management" },
+    { name: "Properties", href: "/properties" },
+    { name: "Concerns", href: "/concerns" },
+    { name: "Landowner", href: "/landowner" },
+    { name: "Buyer", href: "/buyer" },
+    { name: "Blogs", href: "/blogs" },
+    { name: "News & Events", href: "/news-events" },
+    { name: "Gallery", href: "/gallery" },
+    { name: "Contact", href: "/contact" },
+    { name: "CSR", href: "/csr" },
+  ]
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -20,7 +36,7 @@ export default function MenuSection({ isOpen, onClose }: MenuProps) {
           {/* Backdrop */}
           <div className="absolute inset-0 bg-black/50" onClick={onClose} />
 
-          {/* Left side - Image */}
+          {/* Left side (optional image area) */}
           <div className="hidden lg:block w-1/2 h-full relative" />
 
           {/* Right side - Menu */}
@@ -40,16 +56,15 @@ export default function MenuSection({ isOpen, onClose }: MenuProps) {
               <X size={24} className="text-white" />
             </button>
 
-            {/* Main Content: Two Columns */}
+            {/* Main Content */}
             <div className="p-12 pt-20 flex-1 flex">
-              {/* Left Column: Residential, Commercial & Footer */}
+              {/* Left Column */}
               <div className="flex flex-col justify-between w-1/2 pr-12">
                 <div>
                   <h3 className="text-lg font-light tracking-wide text-gray-300 mb-2">Residential</h3>
                   <h3 className="text-lg font-light tracking-wide text-gray-300">Commercial</h3>
                 </div>
 
-                {/* Footer at bottom */}
                 <div>
                   <h4 className="text-sm font-semibold text-white mb-3 tracking-wide">JCX Business Tower</h4>
                   <p className="text-xs text-gray-400 leading-relaxed mb-4">
@@ -61,29 +76,17 @@ export default function MenuSection({ isOpen, onClose }: MenuProps) {
                 </div>
               </div>
 
-              {/* Right Column: Navigation Links */}
+              {/* Right Column - Navigation Links */}
               <div className="w-1/2 flex flex-col justify-start space-y-3">
-                {[
-                  "Home",
-                  "About",
-                  "Management Team",
-                  "Properties",
-                  "Concerns",
-                  "Landowner",
-                  "Buyer",
-                  "Blogs",
-                  "News & Events",
-                  "Gallery",
-                  "Contact",
-                  "CSR",
-                ].map((item) => (
-                  <a
-                    key={item}
-                    href="#"
+                {menuItems.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    onClick={onClose}
                     className="block text-sm font-light text-gray-300 hover:text-white transition-colors tracking-wide"
                   >
-                    {item}
-                  </a>
+                    {item.name}
+                  </Link>
                 ))}
               </div>
             </div>
