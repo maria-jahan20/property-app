@@ -14,11 +14,11 @@ export default function MenuSection({ isOpen, onClose }: MenuProps) {
     { name: "About", href: "/about" },
     { name: "Management Team", href: "/management" },
     { name: "Properties", href: "/properties" },
-    { name: "Concerns", href: "/concerns" },
+    { name: "Concerns", href: "/concern" },
     { name: "Landowner", href: "/landowner" },
     { name: "Buyer", href: "/buyer" },
     { name: "Blogs", href: "/blogs" },
-    { name: "News & Events", href: "/news-events" },
+    { name: "News & Events", href: "/news" },
     { name: "Gallery", href: "/gallery" },
     { name: "Contact", href: "/contact" },
     { name: "CSR", href: "/csr" },
@@ -65,7 +65,7 @@ export default function MenuSection({ isOpen, onClose }: MenuProps) {
                   <h3 className="text-lg font-light tracking-wide text-gray-300">Commercial</h3>
                 </div>
 
-                <div>
+                <div className="mb-96 text-white/70">
                   <h4 className="text-sm font-semibold text-white mb-3 tracking-wide">JCX Business Tower</h4>
                   <p className="text-xs text-gray-400 leading-relaxed mb-4">
                     Plot 110/A, Jasper Street, Block A,

@@ -316,7 +316,7 @@ export default function PropertySection() {
               </div>
 
               {/* Footer Section (always visible) */}
-              <div className="bg-white px-4 py-4">
+              <div className="bg-white px-4 py-4 hover:text-blue-500">
                 <p className="text-black text-xs font-light tracking-wider mb-1">{project.location}</p>
                 <h3 className="text-black font-bold text-lg tracking-wider mb-2">{project.title}</h3>
                 <p className="text-black text-xs font-light">{project.area}</p>

@@ -21,7 +21,7 @@ export default function Perfection() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null)
 
   const totalSlides = PROJECTS.length
-  const visibleCount = 4
+  const visibleCount = 3
 
   useEffect(() => {
     if (!isAutoPlay) return
